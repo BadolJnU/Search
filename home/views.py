@@ -114,16 +114,25 @@ def is_valid_query_param(param):
 
 
 def searchHistory(request):
+   print('this functin')
    qs = SearchHistory.objects.all()
    loginuser_query = request.GET.get('loginuser')
    keyword_query = request.GET.get('keyword')
-   Date_range1 = request.GET.get('Date_range1')
+   Date_range1_str = request.GET.get('Date_range1')
+   print(Date_range1_str)
+   Date_range2_str = request.GET.get('Date_range2')
+   # dateObject1 = datetime.datetime.strptime(Date_range1_str, '%Y/%m/%d')
+   # dateObject2 = datetime.datetime.strptime(Date_range2_str, '%Y/%m/%d')
+
    if is_valid_query_param(loginuser_query):
       qs = qs.filter(loginuser__iexact=loginuser_query)
    elif is_valid_query_param:
       qs = qs.filter(keyword__iexact=keyword_query)
-   elif is_valid_query_param:
-      qs = qs.filter(searchdate__iexact=Date_range1)
+   if is_valid_query_param(Date_range1_str):
+      print('Hitting this if part')
+      qs = qs.filter(searchdate__date__gte=Date_range1_str, searchdate__date__lte=Date_range2_str)
+   if is_valid_query_param(Date_range2_str):
+      qs = qs.filter(searchdate__lt=Date_range2_str)
    context = {
       'query_set':qs
    }

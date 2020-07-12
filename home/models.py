@@ -5,7 +5,7 @@ from django.db import models
 class SearchHistory(models.Model):
     loginuser = models.CharField(max_length=300)
     keyword = models.CharField(max_length=300)
-    searchdate = models.DateTimeField(blank="True")
+    searchdate = models.DateTimeField()
     searchresult = models.CharField(max_length=200)
 
     def __str__(self):
