@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tages-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Font Awesome css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Search History</title>
+
+
+</head>
+
+<body>
+    
+    <div class="container">
+        <h3 style="text-align: center;margin-top: 30px;">Search History Filter</h3>
+        <br>
+        <br>
+        <form action="." method="get">
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <div class="input-group">
+                        <input type="search" class="form-control py-2 border-right-0 border" id="loginuser"
+                            placeholder="Type the login user name" name="loginuser">
+                        <span class="input-group-append">
+                            <div class="input-group-text bg-transparent">
+                                <i class="fa fa-search"></i>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <div class="input-group">
+                        <input type="search" class="form-control py-2 border-right-0 border" id="keyword"
+                            placeholder="Type the Keyword" name="keyword">
+                        <span class="input-group-append">
+                            <div class="input-group-text bg-transparent">
+                                <i class="fa fa-search"></i>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label for="inputCity">Max Search word</label>
+                    <input type="number" min="0" class="form-control" id="inputCity" name="max_search_keyword">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputCity">Min Search word</label>
+                    <input type="number" class="form-control" id="inputCity" name="min_search_keyword">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputCity">Search Date From</label>
+                    <input type="date" class="form-control" id="inputCity" name="Date_range1">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputZip">Search Date To</label>
+                    <input type="Date" placeholder="dd-mm-yyyy" class="form-control" id="inputZip" name="search_range2">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">Result Found</label>
+                    <select id="inputState" class="form-control" name="result_status">
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+
+    <div class="container" style="margin-top: 50px;">
+        <div class="row">
+            <div class="col-12">
+                <h3 style="text-align: center; margin-bottom: 30px;"><u>Search Filtering Result</u></h3>
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">Username</th>
+                        <th scope="col">Keyword</th>
+                        <th scope="col">Search Date</th>
+                        <th scope="col">Result Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for s in query_set %}
+                      <tr>
+                        <td>{{s.loginuser}}</td>
+                        <td>{{s.keyword}}</td>
+                        <td>{{s.searchdate}}</td>
+                        <td>{{s.searchresult}}</td>
+                      </tr>
+                    </tbody>
+                    {% endfor %}
+                  </table>
+            </div>
+        </div>
+    </div>
+    <!--optional js & jquery-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

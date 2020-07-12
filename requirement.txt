@@ -1,1 +1,2 @@
 django==3.0.8
+django-filter==2.3.0
